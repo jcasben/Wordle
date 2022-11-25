@@ -17,7 +17,9 @@ public class Main {
 
             case '1':
                 menu.pedirJugador();
+                menu.pedirIdioma();
                 menu.menuPreJuego();
+                menu.menuJuego();
                 boolean comp = true;
                 for (int i = 0; i < menu.getNumeroTurnos(); i++) {
                     Palabra actual = wordle.pedirEntradaPalabra();

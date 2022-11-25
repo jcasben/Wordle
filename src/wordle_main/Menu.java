@@ -7,10 +7,8 @@ import java.security.spec.RSAOtherPrimeInfo;
 public class Menu {
     private Palabra usuario = new Palabra();
     private Palabra idioma = new Palabra();
-
     private int numero_de_turnos = 5;
     private int turnos_jugados = 0;
-
     private String color_fons_menu = "40";
     private String color_letra_menu = "34";
 
@@ -53,7 +51,10 @@ public class Menu {
     public void menuJuego(){
 
         System.out.print("          ");
-        System.out.print("IDIOMA: " + "" + "     JUGADOR: ");
+        System.out.print("IDIOMA: ");
+        idioma.imprimir_p();
+        System.out.print("          ");
+        System.out.print("JUGADOR: ");
         usuario.imprimir_p();
         System.out.println();
         System.out.print("          ");
@@ -220,10 +221,19 @@ public class Menu {
     }
 
     public void pedirJugador(){
+
         LT lt = new LT();
         System.out.print("Jugador: ");
         char[] jugador = lt.llegirLiniaC();
         usuario = new Palabra(jugador);
+    }
+
+    public void pedirIdioma(){
+
+        LT lt =  new LT();
+        System.out.print("Idioma: ");
+        char[] idiom = lt.llegirLiniaC();
+        idioma = new Palabra(idiom);
     }
 
     public void darResultado(boolean comp){
