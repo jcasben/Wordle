@@ -1,9 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package wordle_main;
 
+/**
+ *
+ * @author jcasb
+ */
 public class Main {
 
-    Menu menu = new Menu();
-    Juego wordle = new Juego();
+     Juego wordle = new Juego();
+    Menu menu = new Menu(wordle);
     private void Start() {
         System.out.println("\n                  ¡B I E N V E N I D O   A   W O R D L E!                  \n");
         menu.menuPrincipal();

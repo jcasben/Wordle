@@ -1,15 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package wordle_main;
 
+/*
+ *
+ * @author jcasb
+ */
 import com.diogonunes.CC;
 
-import java.security.spec.RSAOtherPrimeInfo;
 
 public class Menu {
+    public Menu(Juego j){
+        
+        jg = j;
+    }
+    private Juego jg;
     private Palabra usuario = new Palabra();
     private Palabra idioma = new Palabra();
     private int numero_de_turnos = 5;
     private int turnos_jugados = 0;
-    private String color_fons_menu = "40";
+    private String color_fons_menu = "43";
     private String color_letra_menu = "34";
 
     private char[] letras_teclado_qp = "Q0W0E0R0T0Y0U0I0O0P0".toCharArray();
@@ -163,7 +175,7 @@ public class Menu {
 
     public void actualizarTeclado(Palabra actual){
 
-        for (int i = 0; i < Juego.getTamPalabra(); i++) {//PREGUNTAR PORQUE SALE EL STATIC COMO NECESARIO
+        for (int i = 0; i < jg.getTamPalabra(); i++) {//PREGUNTAR PORQUE SALE EL STATIC COMO NECESARIO
             for (int j = 0; j < letras_teclado_qp.length; j+=2) {
                 if(actual.get(i) == letras_teclado_qp[j]){
                     letras_teclado_qp[j+1] = '2';
@@ -247,8 +259,6 @@ public class Menu {
             for (int i = 0; i < numero_de_turnos; i++) {
                 imprLiniaMenu("                    _ _ _ _ _                    ");
             }
-        } else {
-
         }
     }
 }

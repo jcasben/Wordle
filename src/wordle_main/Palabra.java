@@ -1,5 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package wordle_main;
 
+/**
+ *
+ * @author jcasb
+ */
 public class Palabra{
     private char[] pal;
 
@@ -68,6 +76,7 @@ public class Palabra{
                 }
             }
         }
+        
         return res;
     }
 
@@ -75,13 +84,16 @@ public class Palabra{
 
         char[] may = "QWERTYUIOPASDFGHJKLÑÇZXCVBNM".toCharArray();
         char[] min = "qwertyuiopasdfghjklñçzxcvbnm".toCharArray();
+        
         for (int i = 0; i < t; i++) {
+            
             for (int j = 0; j < min.length; j++) {
+                
                 if(pal[i] == min[j]){
+                    
                     pal[i] = may[j];
                 }
             }
         }
     }
-
 }

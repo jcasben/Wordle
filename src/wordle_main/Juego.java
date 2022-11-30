@@ -1,8 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package wordle_main;
 
+/**
+ *
+ * @author jcasb
+ */
 public class Juego {
 
-    private static int tam_palabra = 5;
+    private  int tam_palabra = 5;
 
     LT lt = new LT();
 
@@ -10,7 +18,7 @@ public class Juego {
 
     }
 
-    public static int getTamPalabra(){
+    public  int getTamPalabra(){
         return tam_palabra;
     }
 
