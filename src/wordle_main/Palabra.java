@@ -1,32 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package wordle_main;
 
 /**
  *
  * @author jcasb
  */
+
 public class Palabra{
     private char[] pal;
 
     private int t = 0;
 
     public Palabra(){
-        init();
+
+        pal = new char[1];
     }
 
     public Palabra(char[] in1){
 
-        init();
+        pal = new char[1];
         for(int i = 0; i < in1.length;i++){
             add(in1[i]);
         }
-    }
-
-    private void init(){
-        pal = new char[1];
     }
 
     public void add(char in2){
@@ -43,10 +37,12 @@ public class Palabra{
         System.out.print(' ');
     }
     public int len(){
+
         return t;
     }
 
     public char get(int ind) {
+
         return pal[ind];
     }
 
@@ -66,31 +62,43 @@ public class Palabra{
 
     public boolean igual(Palabra p) {
 
-        boolean res = true;
         if (t != p.t) {
-            res = false;
+            return false;
         } else {
-            for (int i = 0; (i < t) && res; i++) {
+            for (int i = 0; i < t; i++) {
                 if (pal[i] != p.pal[i]) {
-                    res = false;
+                    return false;
                 }
             }
         }
-        
-        return res;
+
+        return true;
+    }
+
+    public int letrasRepetidas(){
+        int c = 0;
+        for(int i = 0; i < t; i++){
+            for (int j = 0; j < t; j++) {
+                if(i != j && pal[i] == pal[j]){
+                    c++;
+                }
+            }
+        }
+
+        return c;
     }
 
     public void upper(){
 
         char[] may = "QWERTYUIOPASDFGHJKLÑÇZXCVBNM".toCharArray();
         char[] min = "qwertyuiopasdfghjklñçzxcvbnm".toCharArray();
-        
+
         for (int i = 0; i < t; i++) {
-            
+
             for (int j = 0; j < min.length; j++) {
-                
+
                 if(pal[i] == min[j]){
-                    
+
                     pal[i] = may[j];
                 }
             }
