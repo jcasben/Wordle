@@ -27,21 +27,22 @@ public class Menu {
         letras_teclado_zm = "Z0X0C0V0B0N0M0".toCharArray();
         char[] letras_temporal;
         letras_temporal = new char[(wrdl.getTamPalabra()*2)];
-        boolean partida = true;
         wrdl.sacarObjetivo();
         int con = 0;
-        while(partida){
+        while(true){
             wrdl.pedirEntradaPalabra();
-            menuJuego();
             letras_temporal = wrdl.actualizar();
-            actualizarTeclado(letras_temporal);
+            menuJuego();
             if(letras_temporal[1] != '5'){
                 con++;
             } else {
-                partida = false;
+                letras_temporal[1] = '3';
+                actualizarTeclado(letras_temporal);
+                break;
             }
+            actualizarTeclado(letras_temporal);
             if(con == wrdl.getNumeroDeTurnos()){
-                partida = false;
+                break;
             }
         }
     }
@@ -132,9 +133,28 @@ public class Menu {
             System.out.print("          ");
             CC.impr("   ", "", color_fons_menu);
             System.out.print("                    ");
-
+            String color_temporal_impr = "";
             for (int j = 0; j < wrdl.getTamPalabra(); j++) {
-                CC.impr("" + wrdl.getEntradasAnteriores(i).get(j),"30","42");
+
+                switch(wrdl.getEstado(i).get(j)){
+
+                    case '0':
+                        color_temporal_impr = "46";
+                        break;
+
+                    case '1':
+                        color_temporal_impr = "47";
+                        break;
+
+                    case '2':
+                        color_temporal_impr = "43";
+                        break;
+
+                    case '3':
+                        color_temporal_impr = "42";
+                        break;
+                }
+                CC.impr("" + wrdl.getEntradasAnteriores(i).get(j),"30",color_temporal_impr);
                 System.out.print(" ");
             }
             System.out.print("                   ");

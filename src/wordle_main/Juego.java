@@ -27,6 +27,10 @@ public class Juego {
 
     private int turnos_jugados = 0;
 
+    private int contador_estados;
+
+    private Palabra[] estados;
+
     private final LT lt = new LT();
 
 
@@ -114,6 +118,11 @@ public class Juego {
         return tam_palabra;
     }
 
+    public Palabra getEstado(int ind){
+
+        return estados[ind];
+    }
+
     // -------------------- FUNCIONES ------------------------
 
     public char[] actualizar(){
@@ -121,20 +130,25 @@ public class Juego {
         char[] temporal = new char[tam_palabra*2];
         int c = 0;
         int letras_repetidas = objetivo.letrasRepetidas();
+        Palabra estado_temporal = new Palabra();
         for(int i = 0; i < temporal.length; i+=2){
             temporal[i] = entrada.get(i/2);
             for(int j = 0; j < tam_palabra; j++){
                 if(entrada.get(i/2) == objetivo.get(j)){
                     if((i/2) == j){
+                        estado_temporal.add('3');
                         temporal[i+1] = '3';
                     } else {
+                        estado_temporal.add('2');
                         temporal[i+1] = '2';
                     }
                     break;
-                } else {
+                } else if (temporal[i + 1] == '0'){
+                    estado_temporal.add('1');
                     temporal[i + 1] = '1';
                 }
             }
+            estados[turnos_jugados-1] = estado_temporal;
         }
         for(int i = 0; i < temporal.length; i++){
             if(temporal[i] == '3'){
@@ -160,6 +174,8 @@ public class Juego {
         entradas_anteriores = new Palabra[0];
         objetivo.imprimir_p(); //quitarlo luego
         objetivo.upper();
+        estados = new Palabra[numero_de_turnos];
+        contador_estados = 0;
     }
 
     public void pedirEntradaPalabra(){
@@ -262,7 +278,7 @@ public class Juego {
         setUsuario(jugador);
     }
 
-    public void pedirIdioma(){ //arreglar lo que ve el usuario ---> esp = 1, cat = 2, eng = 3
+    public void pedirIdioma(){
 
         char idioma = pedirEntradaOpciones("123".toCharArray(),"Elige el idioma en el que quieras jugar(1 -> esp / 2 -> cat / 3 -> ang): ");
         setIdioma(idioma);
